@@ -81,12 +81,21 @@ class Board{
 		ctx.fillStyle="#fcf7f7";
 		ctx.arc(circle.x,circle.y,10, 0, 2 * Math.PI);
 		ctx.fill();	
+		let headlen=8;
 
+		let fromx = circle.x;
+		let fromy = circle.y;
+		let tox = circle.x+circle.valuex;
+		let toy = circle.y+circle.valuey;
+		let angle = Math.atan2(toy-fromy,tox-fromx);	  
 		ctx.beginPath();
-		ctx.moveTo(circle.x,circle.y);
-		ctx.lineTo(circle.x+circle.valuex,circle.y+circle.valuey);
-
-		ctx.stroke();
+	    ctx.moveTo(fromx, fromy);
+	    ctx.lineTo(tox, toy);
+	    ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+	    ctx.moveTo(tox, toy);
+	    ctx.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));	   
+	    ctx.stroke();
+	    
 	}
 	
 
