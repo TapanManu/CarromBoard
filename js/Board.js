@@ -27,6 +27,9 @@ class Board{
 
 		this.board_center(c);
 		this.baselines(c);
+		this.defineCoins(c);
+
+		
 	}
 	board_center(canvas){
 		this.centre.x=this.breadth/2;
@@ -56,7 +59,7 @@ class Board{
 		ctx.fill();
 
 		ctx.beginPath();
-		ctx.fillStyle="black";
+		ctx.fillStyle="25";
 		ctx.arc(circle.x+circle.valuex,circle.y+circle.valuey,17, 0, 2 * Math.PI);
 		ctx.fill();
 
@@ -97,7 +100,35 @@ class Board{
 	    ctx.stroke();
 	    
 	}
+	defineCoins(canvas){
+		let init = {
+
+		}
+		let striker = new Coin(canvas,13,"#4a8a81",canvas.width-120,canvas.height-65);
+		let black = [];
+		let white = [];
+		let queen = new Coin(canvas,10,"red",canvas.width/2,canvas.height/2);
+
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2- 20,canvas.height/2-20));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2+20,canvas.height/2-20));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2+ 20,canvas.height/2+20));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2- 20,canvas.height/2+20));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2+ 40,canvas.height/2+40));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2- 40,canvas.height/2-40));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2- 40,canvas.height/2+40));
+		black.push(new Coin(canvas,10,"#202838",canvas.width/2+ 40,canvas.height/2-40));
+
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2+28,canvas.height/2));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2-28,canvas.height/2));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2,canvas.height/2+28));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2,canvas.height/2-28));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2+56,canvas.height/2));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2-56,canvas.height/2));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2,canvas.height/2+56));
+		white.push(new Coin(canvas,10,"#558aed",canvas.width/2,canvas.height/2-56));
+		
+
+	}
 	
 
 }
-new Board(500,500).view();
