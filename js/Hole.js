@@ -4,20 +4,20 @@ class Hole{
 		this.num = index;
 		
 		if(index==0){
-			this.x = 20;
-			this.y = 20;
+			this.x = 25;
+			this.y = 25;
 		}
 		if(index==1){
-			this.x = canvas.width - 20;
-			this.y = 20;
+			this.x = canvas.width - 25;
+			this.y = 25;
 		}
 		if(index==2){
-			this.x = 20;
-			this.y = canvas.height-20;
+			this.x = 25;
+			this.y = canvas.height-25;
 		}
 		if(index==3){
-			this.x = canvas.width-20;
-			this.y = canvas.height-20;
+			this.x = canvas.width-25;
+			this.y = canvas.height-25;
 		}
 
 	}
