@@ -5,11 +5,13 @@ let clicked=false;
 let cx_left_wall=22;
 let cx_right_wall = 405;
 let top_wall = 25;
+let bottom_wall = 370
 let p1 = new Point(250,310);
 let p2 = new Point(cx_left_wall,190);
 let p3 = new Point(cx_right_wall,188);
-let p4 = new Point(230,top_wall);
-
+let p4 = new Point(335,top_wall);
+let p5 = new Point(250,bottom_wall);
+let p6 = new Point(120,100);
 
 //drawLine(p2,p3);
 window.addEventListener("load", function(event) {
@@ -31,7 +33,7 @@ window.addEventListener("load", function(event) {
       			striker.setAttribute('cx',x);      	//mouse pointer move along striker
         }
         else if(!clicked && j>=2){
-        		rebound_from_wall(p4);
+        		rebound_from_wall(p1,p6);
         }
   		
       }
