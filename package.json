@@ -1,22 +1,11 @@
 {
-  "name": "carroms",
+  "name": "hello",
   "version": "1.0.0",
-  "description": "carrom board",
-  "main": "main.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TapanManu/CarromBoard.git"
-  },
-  "author": "TapanManu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TapanManu/CarromBoard/issues"
-  },
-  "homepage": "https://github.com/TapanManu/CarromBoard#readme",
-  "devDependencies": {
-    "electron": "^10.1.2"
-  }
+  "author": "",
+  "license": "ISC"
 }
