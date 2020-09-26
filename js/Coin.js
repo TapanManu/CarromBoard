@@ -9,9 +9,9 @@ let bottom_wall = 370
 let p1 = new Point(200,310);
 let p2 = new Point(cx_left_wall,190);
 let p3 = new Point(cx_right_wall,188);
-let p4 = new Point(50,top_wall);
+let p4 = new Point(335,top_wall);
 let p5 = new Point(600,bottom_wall);
-let p6 = new Point(0,90);
+let p6 = new Point(0,400);
 
 //drawLine(p2,p3);
 window.addEventListener("load", function(event) {
@@ -22,6 +22,7 @@ window.addEventListener("load", function(event) {
       striker.style.position = 'relative';
       striker.setAttribute('cx',250);
       striker.setAttribute('cy',310);
+
       j++;
       function onMouseMove(event) {        
         //console.log(event);
@@ -34,11 +35,12 @@ window.addEventListener("load", function(event) {
       		p1.x = x;
         }
         else if(!clicked && j==2){
-        		p = p6;
+        		p = p6 ;
         		if(checkHoles(p)){
         			console.log("hole");
         			striker.setAttribute('cx',p.x);
 					striker.setAttribute('cy',p.y);
+					drawLine(p1,p);
         			return;
         		}
         		rebound_from_wall(p1,p);

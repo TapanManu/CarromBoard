@@ -19,8 +19,7 @@ function dist(p1,p2){
 
 function rebound_from_wall(p1,p2){
 	count++;
-	drawLine(p1,p2,"black");
-	
+
 	finalx = p2.x;
 	finaly = p2.y;
 	let x1,y1;
@@ -86,7 +85,10 @@ function rebound_from_wall(p1,p2){
 	}
 	else if(p2.y<=top_wall || p2.y>=bottom_wall){
 		length = dist(new Point(p2.x,p1.y),p1);
-		
+		if(p2.y<=top_wall)
+			p2.y = top_wall;
+		else if(p2.y>=bottom_wall)
+			p2.y = bottom_wall;
 		if(p1.x<p2.x)
 			x1 = p1.x + 2*length;
 		else
@@ -143,7 +145,7 @@ function rebound_from_wall(p1,p2){
 
 	}
 	//console.log(x1,y1);
-	
+	drawLine(p1,p2,"black");
 	striker.setAttribute('cx',finalx);
 	striker.setAttribute('cy',finaly);
 

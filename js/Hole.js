@@ -1,5 +1,5 @@
 let hx = [50,369,50,369];
-let hy = [60,60,360,360];
+let hy = [60,60,330,330];
 
 function checkHoles(p1){
 	if(p1.x<=hx[0] && p1.y<=hy[0]){
@@ -16,3 +16,4 @@ function checkHoles(p1){
 	}
 	return false;
 }
+
