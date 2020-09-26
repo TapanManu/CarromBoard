@@ -372,14 +372,56 @@
        id="path441"
        style="stroke-width:0.263282" />
   </g>
-   <circle id="redPuc" cx="214" cy="195" r="10" stroke="black" stroke-width="3" fill="red" />
-   <circle id="white1" cx="194" cy="195" r="10" stroke="black" stroke-width="3" fill="white" />
+   <!-- Center vertical -->
+            <circle onclick=alert("w3") id="w3" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("b1") id="b1" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("red") id="red" cx="213" cy="196" r="10" stroke="black" stroke-width="3" fill="red" />
+            <circle onclick=alert("w1") id="w1" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("w2") id="w2" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+
+            //
+            <!-- left side -->
+            <circle onclick=alert("b2") id="b2" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("w4") id="w4" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("b3") id="b3" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("b4") id="b4" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+
+            //
+            <!-- Right side -->
+            <circle onclick=alert("b5") id="b5" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("w5") id="w5" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("b6") id="b6" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("b7") id="b7" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+
+            //
+            <!-- Left max -->
+            <circle onclick=alert("w6") id="w6" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("b8") id="b8" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("w7") id="w7" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+
+            //
+            <!-- Right max -->
+            <circle onclick=alert("w8") id="w8" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+            <circle onclick=alert("b9") id="b9" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="black" />
+            <circle onclick=alert("w9") id="w9" cx="0" cy="0" r="10" stroke="black" stroke-width="3" fill="grey" />
+
+
+            <circle onclick=alert("h1") id="h1" cx="36" cy="40" r="10" stroke="black" stroke-width="3" fill="blue" />
+            <circle onclick=alert("h2") id="h2" cx="389" cy="40" r="10" stroke="black" stroke-width="3" fill="blue" />
+            <circle onclick=alert("h3") id="h3" cx="36" cy="360" r="10" stroke="black" stroke-width="3" fill="blue" />
+            <circle onclick=alert("h4") id="h4" cx="389" cy="360" r="10" stroke="black" stroke-width="3" fill="blue" />
+             <line id="ln" x1="0" y1="10" x2="0" y2="0" stroke="red" />
   <circle id="striker" cx="250" cy="308" r="12" stroke="black" stroke-width="3" fill="green" />
-   
+        <input type="button" onclick="reset();" value="RESET THE BOARD">
+        <input type="button" onclick="initialStrike();" value="INITIAL STRIKE">
+        <input type="button" onclick="trial();" value="IS HOLE">
+        <input type="button" onclick="drawLine(10,20,300,20);" value="LINE">
+        <input type="button" onclick="test();" value="TEST">
 </svg>
 <script src="js/Point.js"></script>
 <script src="js/Hole.js"></script>
+<script src="js/Move.js"></script>
 <script src="js/Force.js"></script>
-<script type="text/javascript" src="js/Coin.js"></script>
+<script type="text/javascript" src="js/Striker.js"></script>
 </body>
 </html>

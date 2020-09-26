@@ -45,6 +45,8 @@ function rebound_from_wall(p1,p2){
 		if(checkHoles(prev)){
 				console.log("in hole");
 				exit=1;
+				stx=finalx;
+				sty=finaly;
 				striker.setAttribute('cx',finalx);
 				striker.setAttribute('cy',finaly);
 				return;
@@ -59,6 +61,8 @@ function rebound_from_wall(p1,p2){
 		if(flag==1){
 			if(checkHoles(new Point(x1,top_wall))){
 				console.log("in hole");
+				stx=x1;
+				sty=top_wall;
 				striker.setAttribute('cx',x1);
 				striker.setAttribute('cy',top_wall);
 				exit=1;
@@ -72,6 +76,8 @@ function rebound_from_wall(p1,p2){
 			if(checkHoles(new Point(x1,bottom_wall))){
 				console.log("in hole");
 				exit=1;
+				stx=x1;
+				sty=bottom_wall;
 				striker.setAttribute('cx',x1);
 				striker.setAttribute('cy',bottom_wall);
 				return;
@@ -99,6 +105,8 @@ function rebound_from_wall(p1,p2){
 		if(checkHoles(prev)){
 				console.log("in hole");
 				exit=1;
+				stx=finalx;
+				sty=finaly;
 				striker.setAttribute('cx',finalx);
 				striker.setAttribute('cy',finaly);
 				return;
@@ -113,6 +121,8 @@ function rebound_from_wall(p1,p2){
 			if(checkHoles(new Point(cx_left_wall,p1.y))){
 				console.log("in hole");
 				exit=1;
+				stx=cx_left_wall;
+				sty=p1.y;
 				striker.setAttribute('cx',cx_left_wall);
 				striker.setAttribute('cy',p1.y);
 				return;
@@ -125,6 +135,8 @@ function rebound_from_wall(p1,p2){
 			if(checkHoles(new Point(cx_right_wall,p1.y))){
 				console.log("in hole");
 				exit=1;
+				stx=cx_right_wall;
+				sty = p1.y;
 				striker.setAttribute('cx',cx_right_wall);
 				striker.setAttribute('cy',p1.y);
 				return;
@@ -146,6 +158,8 @@ function rebound_from_wall(p1,p2){
 	}
 	//console.log(x1,y1);
 	drawLine(p1,p2,"black");
+	stx=finalx;
+	sty=finaly;
 	striker.setAttribute('cx',finalx);
 	striker.setAttribute('cy',finaly);
 
