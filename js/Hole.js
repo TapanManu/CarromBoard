@@ -1,34 +1,18 @@
-class Hole{
-	constructor(index,canvas){
-		this.rad = 15;
-		this.num = index;
-		
-		if(index==0){
-			this.x = 25;
-			this.y = 25;
-		}
-		if(index==1){
-			this.x = canvas.width - 25;
-			this.y = 25;
-		}
-		if(index==2){
-			this.x = 25;
-			this.y = canvas.height-25;
-		}
-		if(index==3){
-			this.x = canvas.width-25;
-			this.y = canvas.height-25;
-		}
+let hx = [50,369,50,369];
+let hy = [60,60,360,360];
 
+function checkHoles(p1){
+	if(p1.x<=hx[0] && p1.y<=hy[0]){
+		return true;
 	}
-	drawHole(canvas){
-		let ctx = canvas.getContext("2d");
-		ctx.beginPath();
-		ctx.fillStyle="#402a2a";
-		ctx.arc(this.x,this.y,this.rad, 0, 2 * Math.PI);
-		ctx.fill();
-		ctx.stroke();
+	if(p1.x>=hx[1] && p1.y<=hy[1]){
+		return true;
 	}
+	if(p1.x<=hx[2] && p1.y>=hy[2]){
+		return true;
+	}
+	if(p1.x>=hx[3] && p1.y>=hy[3]){
+		return true;
+	}
+	return false;
 }
-
-

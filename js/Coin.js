@@ -1,4 +1,4 @@
-let j=0;
+let j=0,p;
 let svg = document.getElementById('svg8');
 let striker = svg.getElementById('striker');
 let clicked=false;
@@ -9,9 +9,9 @@ let bottom_wall = 370
 let p1 = new Point(200,310);
 let p2 = new Point(cx_left_wall,190);
 let p3 = new Point(cx_right_wall,188);
-let p4 = new Point(555,188);
-let p5 = new Point(240,bottom_wall);
-let p6 = new Point(120,100);
+let p4 = new Point(50,top_wall);
+let p5 = new Point(600,bottom_wall);
+let p6 = new Point(0,90);
 
 //drawLine(p2,p3);
 window.addEventListener("load", function(event) {
@@ -31,9 +31,18 @@ window.addEventListener("load", function(event) {
         if(clicked){    	
         	if(x>=110 && x<=320)
       			striker.setAttribute('cx',x);      	//mouse pointer move along striker
+      		p1.x = x;
         }
-        else if(!clicked && j>=2){
-        		rebound_from_wall(p1,p2);
+        else if(!clicked && j==2){
+        		p = p6;
+        		if(checkHoles(p)){
+        			console.log("hole");
+        			striker.setAttribute('cx',p.x);
+					striker.setAttribute('cy',p.y);
+        			return;
+        		}
+        		rebound_from_wall(p1,p);
+        		
         }
   		
       }

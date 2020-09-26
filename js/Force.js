@@ -1,6 +1,7 @@
 let finalx,finaly,prev;
 let flag=0;
 let count=0;
+let exit=0;
 function drawLine(p1,p2,color){
 	let newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
 	newLine.setAttribute('id','line2');
@@ -19,11 +20,11 @@ function dist(p1,p2){
 function rebound_from_wall(p1,p2){
 	count++;
 	drawLine(p1,p2,"black");
-	//striker.setAttribute('cx',p2.x);
-	//striker.setAttribute('cy',p2.y);
+	
 	finalx = p2.x;
 	finaly = p2.y;
 	let x1,y1;
+	prev = new Point(p1.x,p1.y);
 	flag=0
 	if(p2.x<=cx_left_wall || p2.x>=cx_right_wall){
 		length=dist(new Point(p1.x,p2.y),p1);
@@ -40,7 +41,15 @@ function rebound_from_wall(p1,p2){
 		if(p2.x<=cx_left_wall)
 			p2.x = cx_left_wall;
 		finalx=p2.x;
+
 		prev = new Point(finalx,finaly);
+		if(checkHoles(prev)){
+				console.log("in hole");
+				exit=1;
+				striker.setAttribute('cx',finalx);
+				striker.setAttribute('cy',finaly);
+				return;
+			}
 		finalx = x1;
 		finaly = y1;
 
@@ -48,12 +57,28 @@ function rebound_from_wall(p1,p2){
 			flag=1;
 		if( y1 >= bottom_wall)
 			flag=2;
-		if(flag==1){			
-			rebound_from_wall(p2,new Point(x1,top_wall));			
+		if(flag==1){
+			if(checkHoles(new Point(x1,top_wall))){
+				console.log("in hole");
+				striker.setAttribute('cx',x1);
+				striker.setAttribute('cy',top_wall);
+				exit=1;
+				return;
+			}				
+			rebound_from_wall(p2,new Point(x1,top_wall));
+			
 			count--;
 		}
-		if(flag==2){			
-			rebound_from_wall(p2,new Point(x1,bottom_wall));			
+		if(flag==2){
+			if(checkHoles(new Point(x1,bottom_wall))){
+				console.log("in hole");
+				exit=1;
+				striker.setAttribute('cx',x1);
+				striker.setAttribute('cy',bottom_wall);
+				return;
+			}			
+			rebound_from_wall(p2,new Point(x1,bottom_wall));
+			
 			count--;
 		}
 		
@@ -69,6 +94,13 @@ function rebound_from_wall(p1,p2){
 		y1 = p1.y;
 		//console.log(p2.x);
 		prev = new Point(finalx,finaly);
+		if(checkHoles(prev)){
+				console.log("in hole");
+				exit=1;
+				striker.setAttribute('cx',finalx);
+				striker.setAttribute('cy',finaly);
+				return;
+			}
 		finalx = x1;
 		finaly = y1;
 		if(x1<=cx_left_wall) 
@@ -76,11 +108,27 @@ function rebound_from_wall(p1,p2){
 		if(x1>=cx_right_wall)
 			flag=2;
 		if(flag==1){
+			if(checkHoles(new Point(cx_left_wall,p1.y))){
+				console.log("in hole");
+				exit=1;
+				striker.setAttribute('cx',cx_left_wall);
+				striker.setAttribute('cy',p1.y);
+				return;
+			}
 			rebound_from_wall(p2,new Point(cx_left_wall,p1.y));
+			
 			count--;
 		}
 		if(flag==2){
+			if(checkHoles(new Point(cx_right_wall,p1.y))){
+				console.log("in hole");
+				exit=1;
+				striker.setAttribute('cx',cx_right_wall);
+				striker.setAttribute('cy',p1.y);
+				return;
+			}
 			rebound_from_wall(p2,new Point(cx_right_wall,p1.y));
+			
 			count--;
 		}
 		
@@ -98,6 +146,11 @@ function rebound_from_wall(p1,p2){
 	
 	striker.setAttribute('cx',finalx);
 	striker.setAttribute('cy',finaly);
+
+	if(exit==1){
+		drawLine(p1,new Point(finalx,finaly) ,"black");
+	}
+
 	if(count==1)
 		drawLine(prev,new Point(finalx,finaly),"black");
 	return;
