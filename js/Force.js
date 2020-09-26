@@ -2,7 +2,7 @@ let finalx,finaly,prev;
 let flag=0;
 let count=0;
 let exit=0;
-function drawLine(p1,p2,color){
+function draw(p1,p2,color){
 	let newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
 	newLine.setAttribute('id','line2');
 	newLine.setAttribute('x1',p1.x);
@@ -87,7 +87,7 @@ function rebound_from_wall(p1,p2){
 			count--;
 		}
 		
-		//drawLine(p2,new Point(x1,y1),"red");
+		//draw(p2,new Point(x1,y1),"red");
 	}
 	else if(p2.y<=top_wall || p2.y>=bottom_wall){
 		length = dist(new Point(p2.x,p1.y),p1);
@@ -146,28 +146,28 @@ function rebound_from_wall(p1,p2){
 			count--;
 		}
 		
-		//drawLine(p2,new Point(x1,y1),"red");
+		//draw(p2,new Point(x1,y1),"red");
 	}
 	else
 	{
 		length = dist(p1,p2);
 		//finalx = p2.x;
 		//finaly = p2.y;
-		//drawLine(p1,new Point(finalx,finaly));
+		//draw(p1,new Point(finalx,finaly));
 
 	}
 	//console.log(x1,y1);
-	drawLine(p1,p2,"black");
+	draw(p1,p2,"black");
 	stx=finalx;
 	sty=finaly;
 	striker.setAttribute('cx',finalx);
 	striker.setAttribute('cy',finaly);
 
 	if(exit==1){
-		drawLine(p1,new Point(finalx,finaly) ,"black");
+		draw(p1,new Point(finalx,finaly) ,"black");
 	}
 
 	if(count==1)
-		drawLine(prev,new Point(finalx,finaly),"black");
+		draw(prev,new Point(finalx,finaly),"black");
 	return;
 }

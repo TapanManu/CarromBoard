@@ -1,7 +1,7 @@
 let t=0,p;
 let svg = document.getElementById('svg8');
 let striker = svg.getElementById('striker');
-let stx,sty;
+let stx=250,sty=310;
 let clicked=false;
 let cx_left_wall=22;
 let cx_right_wall = 405;
@@ -28,8 +28,7 @@ window.addEventListener("load", function(event) {
       striker.onmousedown = function(event){
       clicked=!clicked;
       striker.style.position = 'relative';
-      stx=250;
-      sty=310;
+      
       striker.setAttribute('cx',stx);
       striker.setAttribute('cy',sty);
 
@@ -53,11 +52,11 @@ window.addEventListener("load", function(event) {
         			stx=p.x;
         			sty=p.y;
         			console.log("hole");
-        			striker.setAttribute('cx',p.x);
-					striker.setAttribute('cy',p.y);
-					drawLine(p1,p);
+        			move(stx,sty,striker)
+					draw(p1,p);
         			return;
         		}
+
         		rebound_from_wall(p1,p);
         		
         }
@@ -95,5 +94,7 @@ function collided(x1,y1,x2,y2,s){		//s is 1 if striker's coordinates are provide
 
 let collid = collided(bx[5],by[5],wx[4],wy[4],0);
 console.log(collid);
+
+//move(100,100,striker);
 
 
