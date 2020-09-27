@@ -2,15 +2,55 @@ var black = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9"];
 var white = ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"];
 
 var bx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-var by = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var by = [];
 
-var wx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-var wy = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var wx = [];
+var wy = [];
 
 const limitXLower = 25;
 const limitXHigher = 370;
 const limitYLower = 25;
 const limitYHigher = 370;
+
+function distance(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) * (x2 - x1) - (y2 - y1) * (y2 - y1));
+}
+
+function collision(x1, y1) {
+  for (let i = 0; i < 9; i++) {
+    if (distance(x1, y1, bx[i], by[i]) <= 25) {
+      if (bx[i] >= x1 && by[i] <= y1) {
+        move(1.3 * bx[i], 1.3 * by[i], black[i]);
+      } else {
+        move(0.5 * bx[i], 1.3 * by[i], black[i]);
+      }
+    }
+    if (distance(x1, y1, wx[i], wy[i]) <= 25) {
+      if (wx[i] >= x1 && wy[i] <= y1) {
+        move(1.3 * wx[i], 1.3 * wy[i], white[i]);
+      } else {
+        move(0.5 * wx[i], 1.3 * wy[i], white[i]);
+      }
+    }
+  }
+}
+
+function mirror() {
+  for (let i = 0; i < 9; i++) {
+    bx[i] = 422 - bx[i];
+    by[i] = 387 - by[i];
+    wx[i] = 422 - wx[i];
+    wy[i] = 387 - wy[i];
+  }
+  for (let i = 0; i < 9; i++) {
+    move(bx[i], by[i], black[i]);
+    move(wx[i], wy[i], white[i]);
+  }
+}
+
+function collide() {
+  collision(213, 196);
+}
 
 function initialStrike() {
   for (let i = 0; i < 9; i++) {
@@ -46,7 +86,7 @@ function move(x, y, cn) {
     elip.setAttribute("cx", x);
     elip.setAttribute("cy", y);
   };
-  setTimeout(blackmove, 100);
+  setTimeout(blackmove, 10);
 }
 
 function drawLine() {
