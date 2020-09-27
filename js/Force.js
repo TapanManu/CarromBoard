@@ -2,15 +2,7 @@ let finalx,finaly,prev;
 let flag=0;
 let count=0;
 let exit=0;
-function draw(p1,p2,color){
-	let newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
-	newLine.setAttribute('id','line2');
-	newLine.setAttribute('x1',p1.x);
-	newLine.setAttribute('y1',p1.y);
-	newLine.setAttribute('x2',p2.x);
-	newLine.setAttribute('y2',p2.y);
-	newLine.setAttribute("stroke", color);
-}
+
 
 function dist(p1,p2){
 	return Math.sqrt((p2.x-p1.x)*(p2.x-p1.x)+(p2.y-p1.y)*(p2.y-p1.y));
@@ -40,10 +32,10 @@ function rebound_from_wall(p1,p2,cn){
 		if(p2.x<=cx_left_wall)
 			p2.x = cx_left_wall;
 		finalx=p2.x;
-		draw(x1,y1,"black");
+		
 		move(x1,y1,cn);
 	
-		prev = new Point(finalx,finaly);
+		//prev = new Point(finalx,finaly);
 		
 		finalx = x1;
 		finaly = y1;
@@ -78,9 +70,9 @@ function rebound_from_wall(p1,p2,cn){
 		else
 			x1 = p1.x - 2*length;
 		y1 = p1.y;
-		draw(x1,y1,"black");
+		
 		move(x1,y1,cn);
-		prev = new Point(finalx,finaly);
+		//prev = new Point(finalx,finaly);
 		
 		finalx = x1;
 		finaly = y1;
@@ -113,17 +105,11 @@ function rebound_from_wall(p1,p2,cn){
 
 	}
 	//console.log(x1,y1);
-	draw(p1,p2,"black");
+	
 	stx=finalx;
 	sty=finaly;
 	//move(stx,sty);
 
-	if(exit==1){
-		draw(p1,new Point(finalx,finaly) ,"black");
-	}
-
-	if(count==1)
-		draw(prev,new Point(finalx,finaly),"black");
 	
 	return;
 }

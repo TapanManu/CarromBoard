@@ -1,4 +1,4 @@
-let t=0,p;
+let t=0,p,tflag=0;
 let svg = document.getElementById('svg8');
 let striker = svg.getElementById('striker');
 let stx=250,sty=310;
@@ -8,13 +8,13 @@ let cx_right_wall = 405;
 let top_wall = 25;
 let bottom_wall = 370;
 let p1 = new Point(200,310);
-let p2 = new Point(cx_left_wall,190);
+/*let p2 = new Point(cx_left_wall,190);
 let p3 = new Point(cx_right_wall,188);
 let p4 = new Point(335,top_wall);
 let p5 = new Point(600,bottom_wall);
 let p6 = new Point(100,200);
 let p7 = new Point(214,195);
-let p8 = new Point(194,195);
+let p8 = new Point(194,195);*/				//testing values
 
 let queen = svg.getElementById('red');
 let qx=213,qy=196;
@@ -47,18 +47,11 @@ window.addEventListener("load", function(event) {
       		p1.x = x;
         }
         else if(!clicked && t==2){
-        		p = p4 ;
-        		if(checkHoles(p)){
-        			stx=p.x;
-        			sty=p.y;
-        			console.log("hole");
-        			move(stx,sty,striker)
-					draw(p1,p,"black");
-        			return;
-        		}
-
-        		rebound_from_wall(p1,p);
+        		//call a function to re - render the page after strike
         		
+        }
+        else if(t>2){
+        	return;
         }
   		
       }

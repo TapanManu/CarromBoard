@@ -47,8 +47,9 @@ function move(x, y, cn) {
     let y1 = elip.getAttribute("cy");
     let i=parseInt(x1);
     let j=parseInt(y1);
-    console.log(x1);
+   
     console.log(x);
+    console.log(y);
   
     
    while(i!==x || j!==y){
@@ -58,6 +59,10 @@ function move(x, y, cn) {
         elip.setAttribute("cx", i+=1);
       else if(i==x)
         elip.setAttribute("cx", i);
+
+      //check for holes
+      
+
 
       if(i<=cx_left_wall || i>=cx_right_wall){
        // console.log(true);
@@ -74,11 +79,15 @@ function move(x, y, cn) {
       else if(j==y)
         elip.setAttribute("cy",j);
       if(j<=top_wall || j>=bottom_wall){
-          rebound_from_wall(new Point(x1,y1),new Point(i,j));
+          rebound_from_wall(new Point(x1,y1),new Point(i,j),"striker");
           break;
       }
+     let h = 0;
+      h = isHole("striker",new Point(i,j));
+      if(h==1)
+          break;
 
-      console.log(i+"  "+j);
+      //console.log(i+"  "+j);
       if(i==x && j==y)
         break;
 

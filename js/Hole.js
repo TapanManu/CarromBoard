@@ -28,10 +28,10 @@ function isHole(coin,p1) {
         (p1.x <= hx[0] && p1.y <= hy[0]) ||
         (p1.x >= hx[1] && p1.y <= hy[1]) ||
         (p1.x <= hx[2] && p1.y >= hy[2]) ||
-        (p1.x >= hx[3] && p1.y <= hy[3])
+        (p1.x >= hx[3] && p1.y >= hy[3])
       ) {
         console.log("-1");
-        return;
+        return 1;
       }
     }
   } else {
@@ -48,7 +48,7 @@ function isHole(coin,p1) {
             var elip = svg.getElementById(coin);
             elip.setAttribute("cx", -1);
             elip.setAttribute("cy", -1);
-            return;
+            return 0;
           }
         }
       }
@@ -64,7 +64,7 @@ function isHole(coin,p1) {
             var elip = svg.getElementById(coin);
             elip.setAttribute("cx", -1);
             elip.setAttribute("cy", -1);
-            return;
+            return 0;
           }
         }
       }
