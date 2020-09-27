@@ -24,8 +24,8 @@ function initialStrike() {
       Math.floor(Math.random() * (limitYHigher - limitYLower)) + limitYLower;
   }
   for (let i = 0; i < 9; i++) {
-    move(bx[i], by[i], black[i]);
-    move(wx[i], wy[i], white[i]);
+    //move(bx[i], by[i], black[i]);
+    //move(wx[i], wy[i], white[i]);
   }
 }
 
@@ -40,19 +40,57 @@ var j = 0,
   w = 300;
 function move(x, y, cn) {
   var svg = document.getElementById("svg8");
-  //console.log(svg);
+  
   var coinmove = function () {
     var elip = svg.getElementById(cn);
-    elip.setAttribute("cx", x);
-    elip.setAttribute("cy", y);
+    let x1 = elip.getAttribute("cx");
+    let y1 = elip.getAttribute("cy");
+    let i=parseInt(x1);
+    let j=parseInt(y1);
+    console.log(x1);
+    console.log(x);
+  
+    
+   while(i!==x || j!==y){
+      if(i>x)
+        elip.setAttribute("cx", i-=1);
+      else if(i<x)
+        elip.setAttribute("cx", i+=1);
+      else if(i==x)
+        elip.setAttribute("cx", i);
+
+      if(i<=cx_left_wall || i>=cx_right_wall){
+       // console.log(true);
+          rebound_from_wall(new Point(x1,y1),new Point(i,j),"striker");
+          break;
+      }
+        
+    
+
+      if(j>y)
+        elip.setAttribute("cy", j-=1);
+      else if(j<y)
+        elip.setAttribute("cy", j+=1);
+      else if(j==y)
+        elip.setAttribute("cy",j);
+      if(j<=top_wall || j>=bottom_wall){
+          rebound_from_wall(new Point(x1,y1),new Point(i,j));
+          break;
+      }
+
+      console.log(i+"  "+j);
+      if(i==x && j==y)
+        break;
+
+    }
   };
-  setTimeout(coinmove, 100);
+ setTimeout(coinmove, 100);
 }
 
 function drawLine() {
   flag = true;
   var svg = document.getElementById("svg8");
-  console.log(svg);
+  //console.log(svg);
   var sr = svg.getElementById("striker");
   ax = sr.getAttribute("cx");
   ay = sr.getAttribute("cy");
@@ -64,18 +102,19 @@ function drawLine() {
     line.setAttribute("y1", ay);
     line.setAttribute("x2", bx);
     line.setAttribute("y2", by);
-    console.log(
+    /*console.log(
       bx,
       by,
       e.clientX,
       e.clientY,
       line.getAttribute("x2"),
       line.getAttribute("y2")
-    );
+    );*/
   };
   document.onmouseup = () => {
     document.getElementById("svg8").removeEventListener("mousemove", drawing);
     var line = svg.getElementById("ln");
+    console.log("hello")
     line.setAttribute("x1", 0);
     line.setAttribute("y1", 0);
     line.setAttribute("x2", 0);
@@ -85,7 +124,7 @@ function drawLine() {
   document.getElementById("svg8").addEventListener("mousemove", drawing);
 }
 
-function reset() {
+/*function reset() {
   for (let i = 0; i < 9; i++) {
     move(rbx[i], rby[i], black[i]);
     move(rwx[i], rwy[i], white[i]);
@@ -96,4 +135,4 @@ function test() {
     move(bx[i], by[i], black[i]);
     move(bx[i], wy[i], white[i]);
   }
-}
+}*/

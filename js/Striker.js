@@ -24,7 +24,7 @@ let qx=213,qy=196;
 //drawLine(p2,p3);
 window.addEventListener("load", function(event) {
       
-      reset();
+      //reset();
       striker.onmousedown = function(event){
       clicked=!clicked;
       striker.style.position = 'relative';
@@ -53,7 +53,7 @@ window.addEventListener("load", function(event) {
         			sty=p.y;
         			console.log("hole");
         			move(stx,sty,striker)
-					draw(p1,p);
+					draw(p1,p,"black");
         			return;
         		}
 
@@ -92,8 +92,8 @@ function collided(x1,y1,x2,y2,s){		//s is 1 if striker's coordinates are provide
 		return(d <= rad);
 }
 
-let collid = collided(bx[5],by[5],wx[4],wy[4],0);
-console.log(collid);
+//let collid = collided(bx[5],by[5],wx[4],wy[4],0);
+//console.log(collid);
 
 //move(100,100,striker);
 
