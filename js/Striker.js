@@ -24,7 +24,7 @@ let qx=213,qy=196;
 //drawLine(p2,p3);
 window.addEventListener("load", function(event) {
       
-      //reset();
+      reset();
       striker.onmousedown = function(event){
       clicked=!clicked;
       striker.style.position = 'relative';
@@ -48,6 +48,7 @@ window.addEventListener("load", function(event) {
         }
         else if(!clicked && t==2){
         		//call a function to re - render the page after strike
+        		//mirror function
         		
         }
         else if(t>2){
@@ -69,7 +70,8 @@ window.addEventListener("load", function(event) {
 
 
 
-let first,sec;
+let first,second;
+
 function collided(x1,y1,x2,y2,s){		//s is 1 if striker's coordinates are provided
 	
 	first = new Point(x1,y1);

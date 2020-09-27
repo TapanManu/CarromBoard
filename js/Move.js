@@ -1,6 +1,6 @@
-var black = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9"];
-var white = ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"];
-
+ black = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9"];
+ white = ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"];
+let resettag=0;
 var bx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var by = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -24,8 +24,8 @@ function initialStrike() {
       Math.floor(Math.random() * (limitYHigher - limitYLower)) + limitYLower;
   }
   for (let i = 0; i < 9; i++) {
-    //move(bx[i], by[i], black[i]);
-    //move(wx[i], wy[i], white[i]);
+    move(bx[i], by[i], black[i]);
+    move(wx[i], wy[i], white[i]);
   }
 }
 
@@ -38,6 +38,18 @@ var rwy = [218, 240, 152, 183, 183, 170, 219, 172, 219];
 var j = 0,
   k = 100,
   w = 300;
+
+function init(x,y,cn){
+   var svg = document.getElementById("svg8");
+  
+   var coinmove = function () {
+    var elip = svg.getElementById(cn);
+    let x1 = elip.setAttribute("cx",x);
+    let y1 = elip.setAttribute("cy",y);
+  };
+  setTimeout(coinmove,100);
+
+}
 function move(x, y, cn) {
   var svg = document.getElementById("svg8");
   
@@ -51,7 +63,7 @@ function move(x, y, cn) {
     console.log(x);
     console.log(y);
   
-    
+       
    while(i!==x || j!==y){
       if(i>x)
         elip.setAttribute("cx", i-=1);
@@ -60,7 +72,7 @@ function move(x, y, cn) {
       else if(i==x)
         elip.setAttribute("cx", i);
 
-      //check for holes
+     
       
 
 
@@ -82,6 +94,7 @@ function move(x, y, cn) {
           rebound_from_wall(new Point(x1,y1),new Point(i,j),"striker");
           break;
       }
+       //check for holes
      let h = 0;
       h = isHole("striker",new Point(i,j));
       if(h==1)
@@ -92,6 +105,7 @@ function move(x, y, cn) {
         break;
 
     }
+  
   };
  setTimeout(coinmove, 100);
 }
@@ -111,7 +125,7 @@ function drawLine() {
     line.setAttribute("y1", ay);
     line.setAttribute("x2", bx);
     line.setAttribute("y2", by);
-    /*console.log(
+   /* console.log(
       bx,
       by,
       e.clientX,
@@ -133,13 +147,16 @@ function drawLine() {
   document.getElementById("svg8").addEventListener("mousemove", drawing);
 }
 
-/*function reset() {
+function reset() {
+  
+  init(250,310,"striker");
   for (let i = 0; i < 9; i++) {
-    move(rbx[i], rby[i], black[i]);
-    move(rwx[i], rwy[i], white[i]);
+    init(rbx[i], rby[i], black[i]);
+    init(rwx[i], rwy[i], white[i]);
   }
+      //does not call move afterwards
 }
-function test() {
+/*function test() {
   for (let i = 0; i < 9; i++) {
     move(bx[i], by[i], black[i]);
     move(bx[i], wy[i], white[i]);
