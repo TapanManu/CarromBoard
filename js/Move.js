@@ -7,6 +7,8 @@ var by = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var wx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var wy = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+
+
 const limitXLower = 25;
 const limitXHigher = 370;
 const limitYLower = 25;
@@ -60,8 +62,8 @@ function move(x, y, cn) {
     let i=parseInt(x1);
     let j=parseInt(y1);
    
-    console.log(x);
-    console.log(y);
+   // console.log(x);
+   // console.log(y);
   
        
    while(i!==x || j!==y){

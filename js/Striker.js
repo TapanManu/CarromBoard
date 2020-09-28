@@ -16,8 +16,7 @@ let p6 = new Point(100,200);
 let p7 = new Point(214,195);
 let p8 = new Point(194,195);*/				//testing values
 
-let queen = svg.getElementById('red');
-let qx=213,qy=196;
+
 
 
 
