@@ -34,7 +34,7 @@ function isHole(coin,p1) {
         return 1;
       }
     }
-  } else {
+  } else{
     for (let i = 0; i < 9; i++) {
       if (coin == black[i]) {
         for (let i = 0; i < 4; i++) {
@@ -70,5 +70,6 @@ function isHole(coin,p1) {
       }
     }
   }
+
 }
 

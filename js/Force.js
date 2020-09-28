@@ -20,7 +20,7 @@ function rebound_from_wall(p1,p2,cn){
 	if(p2.x<=cx_left_wall || p2.x>=cx_right_wall){
 		length=dist(new Point(p1.x,p2.y),p1);
 		x1 = p1.x;
-		console.log(p2.x + " " + p2.y);
+		//console.log(p2.x + " " + p2.y);
 		if(p1.y>=bottom_wall)
 			y1 = p1.y - 2*length;
 		else if(p1.y<=top_wall)

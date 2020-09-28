@@ -7,7 +7,7 @@ var by = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var wx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var wy = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-
+let xx,yy;
 
 const limitXLower = 25;
 const limitXHigher = 370;
@@ -46,19 +46,31 @@ function init(x,y,cn){
   
    var coinmove = function () {
     var elip = svg.getElementById(cn);
-    let x1 = elip.setAttribute("cx",x);
-    let y1 = elip.setAttribute("cy",y);
+    if(elip=="striker"){
+      elip.setAttribute("cx",250);
+      elip.setAttribute("cy",310);
+    }
+    else{
+    elip.setAttribute("cx",x);
+    elip.setAttribute("cy",y);
+  }
   };
   setTimeout(coinmove,10);
 
 }
 function move(x, y, cn) {
   var svg = document.getElementById("svg8");
-  
+  let x1,y1;
   var coinmove = function () {
     var elip = svg.getElementById(cn);
-    let x1 = elip.getAttribute("cx");
-    let y1 = elip.getAttribute("cy");
+    if(elip=="striker"){
+      x1 = "250";
+      y1 = "310";
+    }
+    else{
+    x1 = elip.getAttribute("cx");
+    y1 = elip.getAttribute("cy");
+    }
     let i=parseInt(x1);
     let j=parseInt(y1);
    
@@ -96,7 +108,7 @@ function move(x, y, cn) {
           rebound_from_wall(new Point(x1,y1),new Point(i,j),"striker");
           break;
       }
-      collide(i,j,"striker");
+      collision(i,j,"striker");
        //check for holes
      let h = 0;
       h = isHole("striker",new Point(i,j));
@@ -121,13 +133,13 @@ function drawLine() {
   ax = sr.getAttribute("cx");
   ay = sr.getAttribute("cy");
   var drawing = function (e) {
-    bx = e.clientX;
-    by = e.clientY;
+    xx = e.clientX;
+    yy = e.clientY;
     var line = svg.getElementById("ln");
     line.setAttribute("x1", ax);
     line.setAttribute("y1", ay);
-    line.setAttribute("x2", bx);
-    line.setAttribute("y2", by);
+    line.setAttribute("x2", xx);
+    line.setAttribute("y2", yy);
    /* console.log(
       bx,
       by,
@@ -140,12 +152,12 @@ function drawLine() {
   document.onmouseup = () => {
     document.getElementById("svg8").removeEventListener("mousemove", drawing);
     var line = svg.getElementById("ln");
-    console.log("hello")
+    //console.log("hello")
     line.setAttribute("x1", 0);
     line.setAttribute("y1", 0);
     line.setAttribute("x2", 0);
     line.setAttribute("y2", 0);
-    move(bx, by, "striker");
+    move(xx, yy, "striker");
   };
   document.getElementById("svg8").addEventListener("mousemove", drawing);
 }

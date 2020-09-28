@@ -48,9 +48,11 @@ window.addEventListener("load", function(event) {
         else if(!clicked && t==2){
         		//call a function to re - render the page after strike
         		//mirror function
+
         		
         }
         else if(t>2){
+        	mirror();
         	return;
         }
   		
