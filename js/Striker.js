@@ -1,6 +1,7 @@
 let t=0,p,tflag=0;
 let svg = document.getElementById('svg8');
 let striker = svg.getElementById('striker');
+let st=[250,310];
 let stx=250,sty=310;
 let clicked=false;
 let cx_left_wall=22;
@@ -17,7 +18,7 @@ let p7 = new Point(214,195);
 let p8 = new Point(194,195);*/				//testing values
 
 
-
+let n = 0;
 
 
 //drawLine(p2,p3);
@@ -46,19 +47,23 @@ window.addEventListener("load", function(event) {
       		p1.x = x;
         }
         else if(!clicked && t==2){
-        		//call a function to re - render the page after strike
-        		//mirror function
-
+        		
+        		drawLine();
+        		if(stx>=174 && stx <= 252 )
+        			if(sty>=160 && sty<=240)
+        				n=1;
+        		t++;
         		
         }
-        else if(t>2){
-        	mirror();
-        	return;
+        if(n==1){
+      		initialStrike();
+      		n=0;
         }
   		
       }
       svg.addEventListener('mousemove', onMouseMove);
       svg.appendChild(striker);
+
 
       striker.onmouseup = function() {
         document.removeEventListener('mousemove', onMouseMove);

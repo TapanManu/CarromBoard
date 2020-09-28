@@ -65,7 +65,7 @@ function mirror() {
     qx    = 422 - qx;
     qy    = 387 - qy;
   }
-  init(250,310,"striker");
+  init(st[0],st[1],"striker");
   for (let i = 0; i < 9; i++) {
     init(bx[i], by[i], black[i]);
     init(wx[i], wy[i], white[i]);
