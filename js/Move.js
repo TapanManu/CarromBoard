@@ -1,6 +1,6 @@
  black = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9"];
  white = ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"];
-let resettag=0;
+let resettag=1;
 var bx = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var by = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -26,8 +26,8 @@ function initialStrike() {
       Math.floor(Math.random() * (limitYHigher - limitYLower)) + limitYLower;
   }
   for (let i = 0; i < 9; i++) {
-    move(bx[i], by[i], black[i]);
-    move(wx[i], wy[i], white[i]);
+    init(bx[i], by[i], black[i]);
+    init(wx[i], wy[i], white[i]);
   }
 }
 
@@ -49,7 +49,7 @@ function init(x,y,cn){
     let x1 = elip.setAttribute("cx",x);
     let y1 = elip.setAttribute("cy",y);
   };
-  setTimeout(coinmove,100);
+  setTimeout(coinmove,10);
 
 }
 function move(x, y, cn) {
@@ -96,6 +96,7 @@ function move(x, y, cn) {
           rebound_from_wall(new Point(x1,y1),new Point(i,j),"striker");
           break;
       }
+      collide(i,j,"striker");
        //check for holes
      let h = 0;
       h = isHole("striker",new Point(i,j));
@@ -109,7 +110,7 @@ function move(x, y, cn) {
     }
   
   };
- setTimeout(coinmove, 100);
+ setTimeout(coinmove, 10);
 }
 
 function drawLine() {

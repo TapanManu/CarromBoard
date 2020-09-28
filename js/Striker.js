@@ -69,22 +69,7 @@ window.addEventListener("load", function(event) {
 
 
 
-let first,second;
 
-function collided(x1,y1,x2,y2,s){		//s is 1 if striker's coordinates are provided
-	
-	first = new Point(x1,y1);
-	second = new Point(x2,y2);
-
-	d = dist(first,second);
-	r1 = 10;
-	r2 = 10;
-	if(s==1)
-		r1=13;	
-	rad = r1 + r2;
-	console.log(rad);
-		return(d <= rad);
-}
 
 //let collid = collided(bx[5],by[5],wx[4],wy[4],0);
 //console.log(collid);
